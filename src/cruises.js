@@ -24,23 +24,23 @@ async function displayCruises() {
             name.textContent = cruise.name;
 
             const destination = document.createElement("p");
-            destination.textContent = `destination ${cruise.destination}`;
+            destination.textContent = `Destination ${cruise.destination}`;
 
             const port = document.createElement("p");
-            port.textContent = `depature port: ${cruise.departurePort}`;
+            port.textContent = `Depature port: ${cruise.departurePort}`;
 
             const duration = document.createElement("p");
-            duration.textContent = `duration: ${cruise.duration} days`;
+            duration.textContent = `Duration: ${cruise.duration} days`;
 
             const price = document.createElement("p");
             price.textContent = `price: $${cruise.price.toLocaleString()}`;
 
             const date = document.createElement("p");
-            date.textContent = `departure date : ${cruise.depatureDate}`;
+            date.textContent = `Departure date : ${cruise.departureDate}`;
 
 
             card.append(name, destination, port, duration, price, date);
-            cruiseList.appenChild(card);
+            cruiseList.appendChild(card);
 
 
 
