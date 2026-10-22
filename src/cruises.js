@@ -9,14 +9,14 @@ async function displayCruises() {
 
         const cruises = await getCruises();
 
-        cruiseList.list.replaceChildren();
+        cruiseList.replaceChildren();
 
         if (cruises.length === 0) {
             cruiseStatus.textContent = "No cruises are available right now";
             return;
         }
 
-        cruiseList.forEach((cruise) => {
+        cruises.forEach((cruise) => {
             const card = document.createElement("article");
             card.className = "cruise-card";
 
