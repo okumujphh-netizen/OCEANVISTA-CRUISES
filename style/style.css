@@ -161,8 +161,8 @@ a {
 
 .footer {
     padding: 24px 7%;
-    background-color: --var(--navy);
-    color: --var(--white);
+    background-color: var(--navy);
+    color: var(--white);
     text-align: center;
 }
 
