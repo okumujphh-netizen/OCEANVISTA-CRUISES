@@ -11,6 +11,13 @@
     --border: #D9E2CE;
 }
 
+/*BOX-SIZING*/
+
 * {
     box-sizing: border-box;
+}
+ 
+/*HTML scroll behaviour*/
+html {
+    scroll-behavior: smooth;
 }
