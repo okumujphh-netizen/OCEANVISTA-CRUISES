@@ -8,6 +8,7 @@ async function displayCruises() {
         cruiseStatus.textContent = "loading cruises...";
 
         const cruises = await getCruises();
+        console.log("Cruises received:", cruises);
 
         cruiseList.replaceChildren();
 
