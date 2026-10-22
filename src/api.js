@@ -1,5 +1,7 @@
 const API_URL = "http://localhost:3000";
 
+//API FUNCTIONS
+
 async function getCruises() {
     try {
         const response = await fetch(`${API_URL}/cruises`);
@@ -16,5 +18,5 @@ async function getCruises() {
         throw error;
     }
 }
-
+//ADDED EXPORT FUNCTION
 export { getCruises };
