@@ -165,3 +165,45 @@ a {
     color: --var(--white);
     text-align: center;
 }
+
+@media (max-width: 900px) {
+    .cruise-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+    .hero {
+        padding-top: 76px;
+        padding-bottom: 76px;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 5%;
+    }
+
+    .site-header nav {
+        gap: 16px;
+    }
+
+    .hero {
+        padding: 60px 5%;
+    }
+
+    .cruises-section {
+        padding: 44px 5%;
+    }
+
+    .cruises-section h2 {
+        font-size: 1.7rem;
+
+    }
+
+    .cruise-grid {
+        grid-template-columns: 1fr;
+    }
+}
