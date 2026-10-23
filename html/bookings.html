@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your next voyage with OceanVista Cruises.">
+    <title>Bookings | OceanVista Cruises</title>
+    <link rel="stylesheet" href="style/style.css">
+
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="logo" href="index.html">OceanVista</a>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="cruises.html">Cruises</a>
+            <a href="bookings.html" aria-current="page">Bookings</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="eyebrow">YOUR NEXT ADVENTURE STARTS HERE</p>
+            <h1>Book your cruise.</h1>
+            <p>Choose your voyage and let OceanVista help you plan your next escape.</p>
+        </section>
+
+        <section class="cruises-section">
+            <h2>Make a Booking</h2>
+            <p>Enter your details and select your preferred cruise.</p>
+
+            <form id="booking-form" class="booking-form">
+                <div class="form-group">
+                    <label for="customer-name">Full name</label>
+                    <input type="text" id="customer-name" name="customerName" placeholder="Enter your full name"
+                        required minlength="2">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-email">Email address</label>
+                    <input type="email" id="customer-email" name="customerEmail" placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="booking-cruise">Choose a cruise</label>
+                    <select id="booking-cruise" name="cruiseId" required>
+                        <option value="">Loading cruises...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="booking-guests">Number of guests</label>
+                    <input type="number" id="booking-guests" name="guests" min="1" max="10" value="1" required>
+                </div>
+
+                <button class="button" type="submit">Submit Booking</button>
+
+                <p id="booking-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section class="cruises-section">
+            <h2>Your Bookings</h2>
+            <p>View bookings saved in our demonstration booking system.</p>
+
+            <p id="bookings-status" role="status" aria-live="polite">
+                Loading bookings...
+            </p>
+
+            <div id="bookings-list" class="booking-list"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 OceanVista Cruises. Fictional demo cruise listings.</p>
+    </footer>
+    <script type="module" src="src/bookings.js"></script>
+</body>
+
+</html>

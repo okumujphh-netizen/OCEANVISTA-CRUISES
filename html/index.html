@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCEANVISTA CRUISES|EXPLORE THE WORLD</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<!--HEADER-->
+
+<body>
+    <header class="site-header">
+        <a class="logo" href="index.html">Oceanvista</a>
+        <!--NAV-BAR-->
+        <nav aria-label="main navigation">
+            <a href="index.html">Home</a>
+            <a href="cruises.html">Cruises</a>
+            <a href="bookings.html">Bookings</a>
+        </nav>
+    </header>
+
+
+    <main>
+        <!--HERO SECTION-->
+        <section class="hero">
+            <p class="eyebrow">BEGIN YOUR NEXT ADVENTURE WITH US</p>
+            <h1>Explore the world.<br>Experience your vacation with us.</h1>
+            <p>Discover your next destination and create unforgettable memories</p>
+            <a class="button" href="#cruises">EXPLORE CRUISES</a>
+        </section>
+
+        <!--CRUISES SECTION-->
+
+        <section id="cruises" class="cruises-section">
+            <h2>Dicover Your Next Cruise</h2>
+            <p>Explore our featured voyages </p>
+            <p id="cruise-status" role="status" aria-live="polite">
+                Loading cruises...
+            </p>
+            <div id="cruise-list" class="cruise-grid">
+                <!--javascript will insert cruise grids here-->
+            </div>
+        </section>
+    </main>
+
+    <!--FOOTER SECTION-->
+
+    <footer class="footer">
+        <p>&copy; 2026 Oceanvista cruises. Demo project with fictional cruise listings</p>
+    </footer>
+
+    <!--JAVASCRIPT LINK-->
+    <script type="module" src="src/cruises.js"></script>
+
+</body>
+
+</html>
