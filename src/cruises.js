@@ -62,3 +62,20 @@ async function displayCruises() {
 }
 
 displayCruises();
+
+function populateDestinationFilter(){
+    if(!destinationFilter) return;
+     const destinations = [
+        ...new set (allcruises.map((cruise)=> cruise.destination))
+     ];
+
+     destinations.sort().forEach((destination) => {
+        const option = document.createElement("option");
+        option.value = destination;
+        option.textContent = destination;
+        destinationFilter.appendChild(option);
+
+     });
+}
+populateDestinationFilter()
+
