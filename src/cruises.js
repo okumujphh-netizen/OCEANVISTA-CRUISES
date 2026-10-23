@@ -2,13 +2,16 @@ import { getCruises } from "./api.js";
 
 const cruiseList = document.getElementById("cruise-list");
 const cruiseStatus = document.getElementById("cruise-status");
+const destinationFilter = document.getElementById("destination-filter");
+
+let allCruises = []
 
 async function displayCruises() {
     try {
         cruiseStatus.textContent = "loading cruises...";
 
-        const cruises = await getCruises();
-        console.log("Cruises received:", cruises);
+        allCruises = await getCruises();
+        console.log("Cruises received:", allCruises);
 
         cruiseList.replaceChildren();
 
