@@ -332,3 +332,20 @@ a {
         grid-template-columns: 1fr;
     }
 }
+
+.status-message {
+    padding: 10px 0;
+    font-weight: 600;
+}
+
+.status-success {
+    color: #18794E;
+}
+
+.status-error {
+    color: #B42318;
+}
+
+.status-info {
+    color: var(--muted);
+}
