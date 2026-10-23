@@ -4,21 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EXPLORE CRUISES|OCEANVISTA CRUISES</title>
+    <meta name="description" content="Browse cruise holidays and discover destinations with OceanVista Cruises.">
+    <title>Explore Cruises | OceanVista Cruises</title>
     <link rel="stylesheet" href="style/style.css">
+    <script type="module" src="src/cruises.js"></script>
 </head>
 
 <body>
-    <header class="site header">
-        <a class="logo" href="index.html">Oceanvista cruises</a>
+    <header class="site-header">
+        <a class="logo" href="index.html">OceanVista</a>
 
-        <nav aria-label="main navigation">
+        <nav aria-label="Main navigation">
             <a href="index.html">Home</a>
             <a href="cruises.html" aria-current="page">Cruises</a>
             <a href="bookings.html">Bookings</a>
         </nav>
     </header>
 
+    <main>
+        <section class="hero">
+            <p class="eyebrow">FIND YOUR NEXT ADVENTURE</p>
+            <h1>Discover your world at sea.</h1>
+            <p>Explore our destinations, compare voyages, and find your next getaway.</p>
+        </section>
+
+        <section class="cruises-section">
+            <h2>Explore Our Cruises</h2>
+            <p>Choose a destination to find a voyage that suits you.</p>
+
+            <div class="filter-container">
+                <label for="destination-filter">Filter by destination</label>
+                <select id="destination-filter">
+                    <option value="all">All destinations</option>
+                </select>
+            </div>
+
+            <p id="cruise-status" role="status" aria-live="polite">
+                Loading cruises...
+            </p>
+
+            <div id="cruise-list" class="cruise-grid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OceanVista Cruises. Fictional demo cruise listings.</p>
+    </footer>
 </body>
 
 </html>
