@@ -1,72 +1,58 @@
+
 import { getCruises } from "./api.js";
 
 const cruiseList = document.getElementById("cruise-list");
 const cruiseStatus = document.getElementById("cruise-status");
 const destinationFilter = document.getElementById("destination-filter");
 
-let allCruises = []
+let allCruises = [];
 
-async function displayCruises() {
-    try {
-        cruiseStatus.textContent = "loading cruises...";
+// Display the cruise cards on the page
+function renderCruises(cruises) {
+    cruiseList.replaceChildren();
 
-        allCruises = await getCruises();
-        console.log("Cruises received:", allCruises);
-
-        cruiseList.replaceChildren();
-
-        if (cruises.length === 0) {
-            cruiseStatus.textContent = "No cruises are available right now";
-            return;
-        }
-
-        cruises.forEach((cruise) => {
-            const card = document.createElement("article");
-            card.className = "cruise-card";
-
-            const name = document.createElement("h3");
-            name.textContent = cruise.name;
-
-            const destination = document.createElement("p");
-            destination.textContent = `Destination ${cruise.destination}`;
-
-            const port = document.createElement("p");
-            port.textContent = `Depature port: ${cruise.departurePort}`;
-
-            const duration = document.createElement("p");
-            duration.textContent = `Duration: ${cruise.duration} days`;
-
-            const price = document.createElement("p");
-            price.textContent = `price: $${cruise.price.toLocaleString()}`;
-
-            const date = document.createElement("p");
-            date.textContent = `Departure date : ${cruise.departureDate}`;
-
-
-            card.append(name, destination, port, duration, price, date);
-            cruiseList.appendChild(card);
-
-
-
-        });
-
-        cruiseStatus.textContent = `${cruises.length} cruises available.`;
-
-
-
-    } catch (error) {
-        cruiseStatus.textContent =
-            "we couldnt load cruises please try again.";
-        console.error("unable to display cruises:", error);
+    if (cruises.length === 0) {
+        cruiseStatus.textContent = allCruises.length === 0
+            ? "No cruises are available right now."
+            : "No cruises match this destination.";
+        return;
     }
+
+    cruises.forEach((cruise) => {
+        const card = document.createElement("article");
+        card.className = "cruise-card";
+
+        const name = document.createElement("h3");
+        name.textContent = cruise.name;
+
+        const destination = document.createElement("p");
+        destination.textContent = `Destination: ${cruise.destination}`;
+
+        const port = document.createElement("p");
+        port.textContent = `Departure port: ${cruise.departurePort}`;
+
+        const duration = document.createElement("p");
+        duration.textContent = `Duration: ${cruise.duration} days`;
+
+        const price = document.createElement("p");
+        price.textContent = `Price: $${Number(cruise.price).toLocaleString()}`;
+
+        const date = document.createElement("p");
+        date.textContent = `Departure date: ${cruise.departureDate}`;
+
+        card.append(name, destination, port, duration, price, date);
+        cruiseList.appendChild(card);
+    });
+
+    cruiseStatus.textContent = `${cruises.length} cruises available.`;
 }
 
-displayCruises();
-
+// Add destinations from the API to the dropdown
 function populateDestinationFilter() {
     if (!destinationFilter) return;
+
     const destinations = [
-        ...new set(allcruises.map((cruise) => cruise.destination))
+        ...new Set(allCruises.map((cruise) => cruise.destination))
     ];
 
     destinations.sort().forEach((destination) => {
@@ -74,24 +60,46 @@ function populateDestinationFilter() {
         option.value = destination;
         option.textContent = destination;
         destinationFilter.appendChild(option);
-
     });
 }
-populateDestinationFilter()
 
-
+// Filter cruises when a destination is selected
 function filterCruises() {
+    if (!destinationFilter) return;
+
     const selectedDestination = destinationFilter.value;
 
-    const filterCruises =
+    const filteredCruises =
         selectedDestination === "all"
             ? allCruises
             : allCruises.filter(
                 (cruise) => cruise.destination === selectedDestination
-
             );
 
-    renederedCruises(filterCruises);
-
+    renderCruises(filteredCruises);
 }
-filterCruises();
+
+// Fetch the cruises from JSON Server
+async function displayCruises() {
+    try {
+        cruiseStatus.textContent = "Loading cruises...";
+
+        allCruises = await getCruises();
+        console.log("Cruises received:", allCruises);
+
+        populateDestinationFilter();
+        renderCruises(allCruises);
+
+        if (destinationFilter) {
+            destinationFilter.addEventListener("change", filterCruises);
+        }
+    } catch (error) {
+        cruiseList.replaceChildren();
+        cruiseStatus.textContent =
+            "We couldn't load cruises. Please try again later.";
+
+        console.error("Unable to display cruises:", error);
+    }
+}
+
+displayCruises();
