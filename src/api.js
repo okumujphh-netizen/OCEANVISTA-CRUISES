@@ -53,7 +53,7 @@ function createBooking(booking) {
     });
 }
 
-// PUT: replace an existing booking
+// Update an existing booking
 function updateBooking(id, booking) {
     return request(`bookings?id=eq.${encodeURIComponent(id)}`, {
         method: "PATCH",
@@ -64,7 +64,7 @@ function updateBooking(id, booking) {
     });
 }
 
-// PATCH: update selected fields of a booking
+// PATCH: update selected booking fields
 function patchBooking(id, changes) {
     return request(`bookings?id=eq.${encodeURIComponent(id)}`, {
         method: "PATCH",
@@ -93,3 +93,4 @@ export {
     patchBooking,
     deleteBooking
 };
+
